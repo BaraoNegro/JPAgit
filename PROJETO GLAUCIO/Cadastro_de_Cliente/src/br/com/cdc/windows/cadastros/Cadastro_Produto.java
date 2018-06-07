@@ -38,6 +38,7 @@ public class Cadastro_Produto extends JDialog {
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textProduto;
 	private JTable tableProdutos;
+	private JTextField textValor;
 
 	/**
 	 * Launch the application.
@@ -88,6 +89,10 @@ public class Cadastro_Produto extends JDialog {
 		textProduto.setFont(new Font("Dialog", Font.PLAIN, 16));
 		textProduto.setColumns(10);
 		
+		textValor = new JTextField();
+		textValor.setBounds(205, 294, 176, 33);
+		textValor.setFont(new Font("Dialog", Font.PLAIN, 16));
+		textValor.setColumns(10);
 		
 		JLabel lblNome = new JLabel("Produto: ");
 		lblNome.setBounds(5, 215, 68, 21);
@@ -97,6 +102,10 @@ public class Cadastro_Produto extends JDialog {
 		lblTipoDeProduto.setFont(new Font("Dialog", Font.BOLD, 16));
 		lblTipoDeProduto.setBounds(5, 256, 68, 21);
 		
+		JLabel lblValor = new JLabel("Valor:");
+		lblValor.setFont(new Font("Dialog", Font.BOLD, 17));
+		lblValor.setBounds(137, 300, 61, 14);
+		
 		
 		JComboBox comboBoxProduto = new JComboBox(tprodutos);
 		comboBoxProduto.setBounds(93, 252, 290, 31);
@@ -105,8 +114,10 @@ public class Cadastro_Produto extends JDialog {
 		contentPanel.add(lblCadastroDeProduto);
 		contentPanel.add(lblNome);
 		contentPanel.add(lblTipoDeProduto);
+		contentPanel.add(lblValor);
 		contentPanel.add(textProduto);
 		contentPanel.add(comboBoxProduto);
+		contentPanel.add(textValor);
 		
 		JLabel lblProdutosCadastrados = new JLabel("Produtos Cadastrados");
 		lblProdutosCadastrados.setFont(new Font("Dialog", Font.BOLD, 25));
@@ -122,6 +133,7 @@ public class Cadastro_Produto extends JDialog {
 			Produto produto = new Produto();
 			produto.setId(produtos.get(i).getId());
 			produto.setNome(produtos.get(i).getNome());
+			produto.setValor(produtos.get(i).getValor());
 			dados.add(produto);
 		}
 		
@@ -148,6 +160,7 @@ public class Cadastro_Produto extends JDialog {
 				Produto produto = new Produto();
 				
 				produto.setNome(textProduto.getText());
+				produto.setValor(textValor.getText());
 				
 				try {
 					
@@ -163,6 +176,7 @@ public class Cadastro_Produto extends JDialog {
 				}
 				
 				textProduto.setText("");
+				textValor.setText("");
 				JOptionPane.showMessageDialog(null, "Produto Cadastrado!");
 				modelo.addProduto(produto);
 				tableProdutos.getModel();

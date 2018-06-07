@@ -231,32 +231,6 @@ public class Principal extends JFrame {
 		JMenuItem mntmVenda = new JMenuItem("Venda");
 		mntmVenda.setFont(new Font("Dialog", Font.PLAIN, 16));
 		mntmVenda.addMouseListener(new MouseListener() {
-			 
-			@Override
-	           public void mouseReleased(MouseEvent e) {   
-	           }
-	           @Override
-	           public void mousePressed(MouseEvent e) { 
-	        	   Cadastro_Venda frame = new Cadastro_Venda();
-	        	   frame.setVisible(true);
-	        	   frame.setResizable(false);
-	           }
-	           @Override
-	           public void mouseExited(MouseEvent e) {   
-	           }    
-	           @Override
-	           public void mouseEntered(MouseEvent e) {
-	           }
-	           @Override
-	           public void mouseClicked(MouseEvent e) {
-	           }
-			
-		});
-		mnCadastrarCliente.add(mntmVenda);
-		
-		JMenu mnVenda = new JMenu("VENDA");
-		mnVenda.setFont(new Font("Dialog", Font.BOLD, 25));
-		mnVenda.addMouseListener(new MouseListener() {
             
            @Override
            public void mouseReleased(MouseEvent e) {   
@@ -278,7 +252,7 @@ public class Principal extends JFrame {
            public void mouseClicked(MouseEvent e) {  
            }
        });
-		mnCadastrarCliente.add(mntmCliente);
-		menuBar.add(mnVenda);
+		mnCadastrarCliente.add(mntmVenda);
+		
 	}
 }

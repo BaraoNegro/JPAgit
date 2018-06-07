@@ -112,31 +112,37 @@ public class Cadastro_Venda extends JDialog {
 		
 		//TESTE
 		
-		List<Produto> produtoss = Conexao.listarProduto();
+		
+		
+		
+		
+		
+		List<Venda> vendas = Conexao.listarVenda();
 		
 		ArrayList dados = new ArrayList();
 		
-		for(int i = 0; i < produtoss.size(); i++) {
+		for(int i = 0; i < vendas.size(); i++) {
 			
-			Produto produto = new Produto();
-			produto.setId(produtoss.get(i).getId());
-			produto.setNome(produtoss.get(i).getNome());
-			dados.add(produto);
+			Venda venda = new Venda();
+			venda.setId(vendas.get(i).getId());
+			venda.setProduto(vendas.get(i).getProduto());
+			dados.add(venda);
 		}
 		
-		TableModelProduto modelo = new TableModelProduto(dados);
+		TableModelVenda modelo = new TableModelVenda(dados);
 		
-		table_1 = new JTable();
-		table_1.setBounds(613, 79, 141, 366);
-		table_1.setModel(modelo);
-		table_1.getColumnModel().getColumn(0).setPreferredWidth(30);
-		table_1.getColumnModel().getColumn(0).setResizable(false);
-		table_1.getColumnModel().getColumn(1).setPreferredWidth(210);
-		table_1.getColumnModel().getColumn(1).setResizable(false);
+		tableVendas = new JTable();
+		tableVendas.setShowVerticalLines(true);
+		tableVendas.setShowHorizontalLines(true);
+		tableVendas.setFont(new Font("Dialog", Font.PLAIN, 14));
+		tableVendas.setColumnSelectionAllowed(true);
+		tableVendas.setBounds(1002, 100, 176, 505);
 		
-		JScrollPane scrollPane = new JScrollPane(table_1);
-		scrollPane.setBounds(460, 79, 265, 313);
-		contentPanel.add(scrollPane);
+		tableVendas.setModel(modelo);
+		tableVendas.getColumnModel().getColumn(0).setPreferredWidth(30);
+		tableVendas.getColumnModel().getColumn(0).setResizable(false);
+		tableVendas.getColumnModel().getColumn(1).setPreferredWidth(210);
+		tableVendas.getColumnModel().getColumn(1).setResizable(false);
 		
 	
 		
@@ -242,6 +248,10 @@ public class Cadastro_Venda extends JDialog {
 		textValorTotal.setBounds(607, 403, 118, 42);
 		contentPanel.add(textValorTotal);
 		textValorTotal.setColumns(10);
+		
+		JScrollPane scrollPane = new JScrollPane(tableVendas);
+		scrollPane.setBounds(460, 79, 265, 313);
+		contentPanel.add(scrollPane);
 		
 		JLabel lblValorTotal = new JLabel("Valor Total:");
 		lblValorTotal.setFont(new Font("Dialog", Font.BOLD, 25));

@@ -23,18 +23,19 @@ public class TableModelProduto extends AbstractTableModel{
     }
     public int getColumnCount() {
     	//Quantidade de Colunas da tabela, no caso aqui são 4.
-        return 2;
+        return 3;
     }
     public String getColumnName(int columnIndex) {
     	 //Nome das colunas da JTable
-        String colunas[] = {"Id", "Nome"};
+        String colunas[] = {"Id", "Nome","Valor"};
         return colunas[columnIndex];
     }
     public Object getValueAt(int row, int column) {
     	//Retornar o valor da coluna column e da linha row da JTable.
     	Produto produtos = produto.get(row);
         if (column == 0) return produtos.getId();
-        else return produtos.getNome();
+        else if (column == 1) return produtos.getNome();
+        else return produtos.getValor();
 
     }
 
@@ -44,6 +45,7 @@ public class TableModelProduto extends AbstractTableModel{
      
     	if (columnIndex == 0) est.setId((Long)aValue);
         else if (columnIndex == 1) est.setNome((String)aValue);
+        else if (columnIndex == 2) est.setValor((String)aValue);
         else throw new IndexOutOfBoundsException("columnIndex out of bounds");
         	
         fireTableCellUpdated(rowIndex, columnIndex); // Notifica a atualização da célula

@@ -23,18 +23,19 @@ public class TableModelVenda extends AbstractTableModel{
     }
     public int getColumnCount() {
     	//Quantidade de Colunas da tabela, no caso aqui são 4.
-        return 2;
+        return 3;
     }
     public String getColumnName(int columnIndex) {
     	 //Nome das colunas da JTable
-        String colunas[] = {"Id", "Produto"};
+        String colunas[] = {"Id", "Produto", "Venda"};
         return colunas[columnIndex];
     }
     public Object getValueAt(int row, int column) {
     	//Retornar o valor da coluna column e da linha row da JTable.
     	Produto vendas = venda.get(row);
         if (column == 0) return vendas.getId();
-        else return vendas.getNome();
+        else if (column == 1) return vendas.getNome();
+        else return vendas.getValor();
 
     }
 
